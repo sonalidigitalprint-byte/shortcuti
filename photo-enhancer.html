@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Photo Enhancer</title><style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#07111f;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.container{
+  width:100%;
+  max-width:900px;
+  background:#081528;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 0 25px rgba(0,0,0,.4);
+}
+
+h1{
+  text-align:center;
+  color:#22c55e;
+  margin-bottom:20px;
+}
+
+.upload{
+  border:2px dashed #475569;
+  border-radius:14px;
+  padding:30px;
+  text-align:center;
+  cursor:pointer;
+  display:block;
+  margin-bottom:20px;
+}
+
+.upload:hover{
+  border-color:#22c55e;
+}
+
+.upload input{
+  display:none;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:12px;
+  background:#22c55e;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.preview{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.box{
+  background:#162235;
+  border-radius:14px;
+  padding:10px;
+}
+
+.box h3{
+  margin-bottom:10px;
+}
+
+.box img{
+  width:100%;
+  border-radius:12px;
+  display:block;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:10px 16px;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.hd{
+  background:#2563eb;
+}
+
+.k4{
+  background:#7c3aed;
+}
+
+.pro{
+  background:#f59e0b;
+}
+
+.down{
+  background:#16a34a;
+}
+
+.orig{
+  background:#475569;
+}
+
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.status{
+  text-align:center;
+  margin-top:15px;
+  color:#cbd5e1;
+}
+
+@media(max-width:700px){
+  .preview{
+    grid-template-columns:1fr;
+  }
+}
+</style></head><body><div class="container">  <h1>AI Photo Enhancer</h1>  <label class="upload">
+    <input type="file" id="fileInput" accept="image/*" /><div style="font-size:34px;font-weight:bold;">+</div>
+
+<div style="margin-top:8px">
+  Drag & Drop or Click to Upload
+</div>
+
+<div class="btn">
+  Choose Image
+</div>
+
+  </label>  <div class="preview"><div class="box">
+  <h3>Original</h3>
+  <img id="original" src="" alt="Original" />
+</div>
+
+<div class="box">
+  <h3>Enhanced</h3>
+  <img id="enhanced" src="" alt="Enhanced" />
+</div>
+
+  </div>  <div class="buttons"><button class="hd" id="hdBtn">
+  Enhance HD (2x)
+</button>
+
+<button class="k4" id="fourBtn">
+  Enhance 4K (4x)
+</button>
+
+<button class="pro" id="proBtn">
+  ✨ Enhance Pro
+</button>
+
+<button class="down" id="downloadBtn">
+  Download Image
+</button>
+
+<button class="orig" id="downloadOriginalBtn">
+  Download Original
+</button>
+
+  </div>  <div class="status" id="status">
+    Upload an image to start
+  </div></div><script>
+
+const fileInput = document.getElementById("fileInput");
+const original = document.getElementById("original");
+const enhanced = document.getElementById("enhanced");
+const statusText = document.getElementById("status");
+
+let currentFile = null;
+let enhancedUrl = "";
+
+
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+fileInput.addEventListener("change", () => {
+
+  const file = fileInput.files[0];
+
+  if (!file) return;
+
+  currentFile = file;
+
+  const reader = new FileReader();
+
+  reader.onload = e => {
+
+    original.src = e.target.result;
+
+    enhanced.src = e.target.result;
+
+    enhancedUrl = e.target.result;
+
+    statusText.textContent =
+      "Image loaded successfully";
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+
+/* =========================
+   ENHANCE FUNCTION
+========================= */
+
+async function enhance(scale){
+
+  if (!currentFile){
+
+    alert("Please upload an image first");
+
+    return;
+  }
+
+
+  /* STATUS MESSAGE */
+
+  if(scale === 2){
+
+    statusText.textContent =
+      "Enhancing HD (2x)...";
+
+  }
+  else if(scale === 4){
+
+    statusText.textContent =
+      "Enhancing 4K (4x)...";
+
+  }
+  else if(scale === "pro"){
+
+    statusText.textContent =
+      "✨ Enhance Pro processing...";
+
+  }
+
+
+  /* FORM DATA */
+
+  const formData = new FormData();
+
+  formData.append("image", currentFile);
+
+  formData.append("scale", scale);
+
+
+  try{
+
+    const WORKER_URL =
+      "https://photoenhancerapi.sonalidigitalprint.workers.dev/";
+
+
+    const res = await fetch(WORKER_URL,{
+
+      method:"POST",
+
+      body:formData
+
+    });
+
+
+    const responseText = await res.text();
+
+
+    /* ERROR CHECK */
+
+    if(!res.ok){
+
+      let msg = responseText;
+
+      try{
+
+        const err = JSON.parse(responseText);
+
+        msg =
+          err.details ||
+          err.error ||
+          responseText;
+
+      }catch(e){}
+
+      throw new Error(msg);
+
+    }
+
+
+    /* JSON RESPONSE */
+
+    let data;
+
+    try{
+
+      data = JSON.parse(responseText);
+
+    }catch(e){
+
+      throw new Error(
+        "Invalid response from Worker"
+      );
+
+    }
+
+
+    /* IMAGE CHECK */
+
+    if(!data.secure_url){
+
+      throw new Error(
+        data.details ||
+        data.error ||
+        "No enhanced image returned"
+      );
+
+    }
+
+
+    /* SHOW RESULT */
+
+    enhanced.src = data.secure_url;
+
+    enhancedUrl = data.secure_url;
+
+
+    /* SUCCESS MESSAGE */
+
+    if(scale === 2){
+
+      statusText.textContent =
+        "HD enhancement complete!";
+
+    }
+    else if(scale === 4){
+
+      statusText.textContent =
+        "4K enhancement complete!";
+
+    }
+    else if(scale === "pro"){
+
+      statusText.textContent =
+        "✨ Enhance Pro complete!";
+
+    }
+
+  }
+  catch(err){
+
+    statusText.textContent =
+      "Enhancement failed: " +
+      err.message;
+
+    console.error(err);
+
+  }
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+document.getElementById("hdBtn")
+  .addEventListener(
+    "click",
+    () => enhance(2)
+  );
+
+
+document.getElementById("fourBtn")
+  .addEventListener(
+    "click",
+    () => enhance(4)
+  );
+
+
+/* PRO BUTTON */
+
+document.getElementById("proBtn")
+  .addEventListener(
+    "click",
+    () => enhance("pro")
+  );
+
+
+/* =========================
+   DOWNLOAD ENHANCED
+========================= */
+
+document.getElementById("downloadBtn")
+  .addEventListener("click", () => {
+
+    if(!enhancedUrl) return;
+
+    const a =
+      document.createElement("a");
+
+    a.href = enhancedUrl;
+
+    a.download =
+      "enhanced-image.png";
+
+    a.click();
+
+  });
+
+
+/* =========================
+   DOWNLOAD ORIGINAL
+========================= */
+
+document.getElementById("downloadOriginalBtn")
+  .addEventListener("click", () => {
+
+    if(!original.src) return;
+
+    const a =
+      document.createElement("a");
+
+    a.href = original.src;
+
+    a.download =
+      "original-image.png";
+
+    a.click();
+
+  });
+
+</script></body>
+</html>

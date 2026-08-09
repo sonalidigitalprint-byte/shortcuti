@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Unicode ↔ Bijoy Converter | Shortcuti</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+  font-family:
+    Arial,
+    "Noto Sans Bengali",
+    sans-serif;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5f9ff,
+      #eef4ff
+    );
+
+  min-height:100vh;
+
+  padding:30px 15px;
+
+  color:#1e293b;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+
+  width:100%;
+
+  max-width:1200px;
+
+  margin:auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+  text-align:center;
+
+  margin-bottom:30px;
+}
+
+
+.logo{
+
+  display:inline-block;
+
+  background:#2563eb;
+
+  color:white;
+
+  padding:8px 16px;
+
+  border-radius:30px;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+  margin-bottom:12px;
+
+  box-shadow:
+    0 5px 15px rgba(37,99,235,.20);
+}
+
+
+h1{
+
+  font-size:34px;
+
+  font-weight:800;
+
+  margin-bottom:8px;
+
+  color:#0f172a;
+}
+
+
+.subtitle{
+
+  color:#64748b;
+
+  font-size:16px;
+
+  line-height:1.6;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.main-card{
+
+  background:white;
+
+  border-radius:20px;
+
+  padding:22px;
+
+  box-shadow:
+    0 10px 35px rgba(15,23,42,.08);
+
+  border:
+    1px solid #e2e8f0;
+}
+
+
+/* =========================
+   CONVERTER
+========================= */
+
+.converter{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    150px
+    minmax(0,1fr);
+
+  gap:20px;
+
+  align-items:center;
+}
+
+
+/* =========================
+   TEXT BOX
+========================= */
+
+.box{
+
+  background:#f8fafc;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius:16px;
+
+  padding:16px;
+}
+
+
+.box-header{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  margin-bottom:12px;
+}
+
+
+.title{
+
+  font-size:19px;
+
+  font-weight:700;
+
+  color:#0f172a;
+}
+
+
+.badge{
+
+  font-size:12px;
+
+  padding:5px 9px;
+
+  border-radius:20px;
+
+  background:#e0ecff;
+
+  color:#1d4ed8;
+
+  font-weight:600;
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+textarea{
+
+  width:100%;
+
+  height:320px;
+
+  resize:vertical;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius:12px;
+
+  padding:15px;
+
+  outline:none;
+
+  background:white;
+
+  color:#1e293b;
+
+  font-size:18px;
+
+  line-height:1.8;
+
+  transition:.2s;
+}
+
+
+textarea:focus{
+
+  border-color:#2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37,99,235,.10);
+}
+
+
+/* =========================
+   UNICODE FONT
+========================= */
+
+#unicodeText{
+
+  font-family:
+    Arial,
+    "Noto Sans Bengali",
+    sans-serif;
+}
+
+
+/* =========================
+   BIJOY FONT
+========================= */
+
+#bijoyText{
+
+  /*
+    আসল Bijoy encoding থাকবে।
+    SutonnyMJ থাকলে স্ক্রিনে
+    বাংলা হিসেবে দেখা যাবে।
+  */
+
+  font-family:
+    "SutonnyMJ",
+    "Sutonny MJ",
+    sans-serif;
+
+  font-size:20px;
+
+  line-height:1.9;
+}
+
+
+/* =========================
+   BOX BUTTONS
+========================= */
+
+.buttons{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+
+  margin-top:12px;
+}
+
+
+button{
+
+  border:none;
+
+  border-radius:10px;
+
+  padding:12px 14px;
+
+  font-size:15px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+  color:white;
+
+  background:#2563eb;
+}
+
+
+button:hover{
+
+  transform:translateY(-1px);
+
+  opacity:.92;
+}
+
+
+button:active{
+
+  transform:scale(.98);
+}
+
+
+/* =========================
+   MIDDLE
+========================= */
+
+.middle{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:12px;
+
+  justify-content:center;
+}
+
+
+.middle button{
+
+  width:100%;
+
+  min-height:48px;
+
+  font-size:15px;
+
+  box-shadow:
+    0 5px 15px rgba(37,99,235,.15);
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+.clear{
+
+  background:#ef4444 !important;
+
+  box-shadow:
+    0 5px 15px rgba(239,68,68,.12) !important;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+
+  margin-top:18px;
+
+  text-align:center;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  color:#15803d;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+
+  margin-top:20px;
+
+  background:#fffbeb;
+
+  border:
+    1px solid #fde68a;
+
+  border-radius:12px;
+
+  padding:14px 16px;
+
+  color:#78350f;
+
+  font-size:14px;
+
+  line-height:1.7;
+
+  text-align:center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+  text-align:center;
+
+  margin-top:20px;
+
+  color:#94a3b8;
+
+  font-size:13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+  .converter{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .middle{
+
+    flex-direction:row;
+
+    flex-wrap:wrap;
+
+  }
+
+
+  .middle button{
+
+    flex:1;
+
+    min-width:150px;
+  }
+
+}
+
+
+@media(max-width:550px){
+
+  body{
+
+    padding:
+      20px 10px;
+
+  }
+
+
+  h1{
+
+    font-size:26px;
+
+  }
+
+
+  .subtitle{
+
+    font-size:14px;
+
+  }
+
+
+  .main-card{
+
+    padding:12px;
+
+    border-radius:15px;
+
+  }
+
+
+  .box{
+
+    padding:12px;
+
+  }
+
+
+  textarea{
+
+    height:250px;
+
+    font-size:17px;
+
+  }
+
+
+  .middle{
+
+    flex-direction:column;
+
+  }
+
+
+  .middle button{
+
+    width:100%;
+
+  }
+
+
+  .buttons{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+<div class="logo">
+Shortcuti
+</div>
+
+<h1>
+Unicode ↔ Bijoy Converter
+</h1>
+
+<p class="subtitle">
+বাংলা Unicode ও Bijoy লেখা সহজে রূপান্তর করুন
+</p>
+
+</div>
+
+
+
+<!-- =========================
+     MAIN CARD
+========================= -->
+
+<div class="main-card">
+
+
+<div class="converter">
+
+
+<!-- =========================
+     UNICODE
+========================= -->
+
+<div class="box">
+
+
+<div class="box-header">
+
+<div class="title">
+ইউনিকোড
+</div>
+
+<div class="badge">
+Unicode
+</div>
+
+</div>
+
+
+<textarea
+id="unicodeText"
+placeholder="এখানে Unicode বাংলা লিখুন..."
+></textarea>
+
+
+<div class="buttons">
+
+
+<button
+type="button"
+onclick="copyUnicode()">
+
+কপি
+
+</button>
+
+
+<button
+type="button"
+onclick="downloadUnicode()">
+
+ডাউনলোড
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     MIDDLE
+========================= -->
+
+<div class="middle">
+
+
+<button
+type="button"
+onclick="convertToBijoy()">
+
+বিজয় →
+</button>
+
+
+<button
+type="button"
+onclick="convertToUnicode()">
+
+← ইউনিকোড
+</button>
+
+
+<button
+type="button"
+class="clear"
+onclick="clearAll()">
+
+মুছে ফেলুন
+
+</button>
+
+
+</div>
+
+
+
+<!-- =========================
+     BIJOY
+========================= -->
+
+<div class="box">
+
+
+<div class="box-header">
+
+<div class="title">
+বিজয়
+</div>
+
+<div class="badge">
+Bijoy
+</div>
+
+</div>
+
+
+<textarea
+id="bijoyText"
+placeholder="এখানে Bijoy লেখা দেখা যাবে..."
+></textarea>
+
+
+<div class="buttons">
+
+
+<button
+type="button"
+onclick="copyBijoy()">
+
+কপি
+
+</button>
+
+
+<button
+type="button"
+onclick="downloadBijoy()">
+
+ডাউনলোড
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     STATUS
+========================= -->
+
+<div
+id="status"
+class="status">
+
+Converter চালু হচ্ছে...
+
+</div>
+
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+💡 Bijoy লেখা SutonnyMJ font থাকলে
+বাংলা হিসেবে দেখা যাবে।
+
+কপি বা ডাউনলোড করলে আসল Bijoy
+encoding থাকবে।
+
+Word, Photoshop ও Illustrator-এ
+SutonnyMJ font ব্যবহার করুন।
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<div class="footer">
+
+© Shortcuti — Unicode ↔ Bijoy Converter
+
+</div>
+
+
+</div>
+
+
+
+<!-- =================================================
+     CONVERTER ENGINE
+================================================= -->
+
+<script type="module">
+
+
+/*
+====================================================
+  CONVERTER LIBRARY
+====================================================
+*/
+
+import {
+
+  bijoyToUnicode,
+
+  unicodeToBijoy
+
+}
+
+from
+
+"https://esm.sh/@abdalgolabs/ansi-unicode-converter@1.0.5";
+
+
+
+/*
+====================================================
+  ENGINE
+====================================================
+*/
+
+window.bijoyToUnicodeEngine =
+  bijoyToUnicode;
+
+
+window.unicodeToBijoyEngine =
+  unicodeToBijoy;
+
+
+
+/*
+====================================================
+  READY
+====================================================
+*/
+
+document
+  .getElementById("status")
+  .textContent =
+  "Converter Ready ✓";
+
+
+
+/*
+====================================================
+  UNICODE → BIJOY
+====================================================
+*/
+
+window.convertToBijoy = function(){
+
+
+  const input =
+
+    document
+      .getElementById("unicodeText")
+      .value;
+
+
+  if(!input.trim()){
+
+    alert(
+      "আগে Unicode বাংলা লেখা লিখুন।"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+
+    const result =
+
+      window
+        .unicodeToBijoyEngine(input);
+
+
+    document
+      .getElementById("bijoyText")
+      .value =
+      result;
+
+
+  }
+
+  catch(error){
+
+
+    console.error(error);
+
+
+    alert(
+      "Unicode থেকে Bijoy conversion করা যায়নি।"
+    );
+
+
+  }
+
+};
+
+
+
+/*
+====================================================
+  BIJOY → UNICODE
+====================================================
+*/
+
+window.convertToUnicode = function(){
+
+
+  const input =
+
+    document
+      .getElementById("bijoyText")
+      .value;
+
+
+  if(!input.trim()){
+
+    alert(
+      "আগে Bijoy লেখা দিন।"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+
+    const result =
+
+      window
+        .bijoyToUnicodeEngine(input);
+
+
+    document
+      .getElementById("unicodeText")
+      .value =
+      result;
+
+
+  }
+
+  catch(error){
+
+
+    console.error(error);
+
+
+    alert(
+      "Bijoy থেকে Unicode conversion করা যায়নি।"
+    );
+
+
+  }
+
+};
+
+
+
+/*
+====================================================
+  CLEAR
+====================================================
+*/
+
+window.clearAll = function(){
+
+
+  document
+    .getElementById("unicodeText")
+    .value = "";
+
+
+  document
+    .getElementById("bijoyText")
+    .value = "";
+
+
+};
+
+
+
+/*
+====================================================
+  COPY
+====================================================
+*/
+
+function copyText(text){
+
+
+  if(!text){
+
+    alert(
+      "কপি করার মতো লেখা নেই।"
+    );
+
+    return;
+
+  }
+
+
+  if(
+
+    navigator.clipboard &&
+
+    window.isSecureContext
+
+  ){
+
+
+    navigator.clipboard
+
+      .writeText(text)
+
+      .then(function(){
+
+
+        alert(
+          "লেখা কপি হয়েছে।"
+        );
+
+
+      })
+
+      .catch(function(){
+
+
+        fallbackCopy(text);
+
+
+      });
+
+
+  }
+
+  else{
+
+
+    fallbackCopy(text);
+
+  }
+
+}
+
+
+
+/*
+====================================================
+  FALLBACK COPY
+====================================================
+*/
+
+function fallbackCopy(text){
+
+
+  const temp =
+
+    document
+      .createElement("textarea");
+
+
+  temp.value =
+    text;
+
+
+  temp.style.position =
+    "fixed";
+
+
+  temp.style.left =
+    "-9999px";
+
+
+  document.body
+    .appendChild(temp);
+
+
+  temp.select();
+
+
+  try{
+
+
+    document.execCommand(
+      "copy"
+    );
+
+
+    alert(
+      "লেখা কপি হয়েছে।"
+    );
+
+
+  }
+
+  catch(error){
+
+
+    alert(
+      "কপি করা যায়নি।"
+    );
+
+
+  }
+
+
+  document.body
+    .removeChild(temp);
+
+}
+
+
+
+/*
+====================================================
+  COPY UNICODE
+====================================================
+*/
+
+window.copyUnicode = function(){
+
+
+  copyText(
+
+    document
+      .getElementById("unicodeText")
+      .value
+
+  );
+
+};
+
+
+
+/*
+====================================================
+  COPY BIJOY
+====================================================
+*/
+
+window.copyBijoy = function(){
+
+
+  copyText(
+
+    document
+      .getElementById("bijoyText")
+      .value
+
+  );
+
+};
+
+
+
+/*
+====================================================
+  DOWNLOAD
+====================================================
+*/
+
+function downloadText(
+
+  text,
+
+  filename
+
+){
+
+
+  if(!text){
+
+    alert(
+      "Download করার মতো লেখা নেই।"
+    );
+
+    return;
+
+  }
+
+
+  const blob =
+
+    new Blob(
+
+      [text],
+
+      {
+
+        type:
+          "text/plain;charset=utf-8"
+
+      }
+
+    );
+
+
+  const url =
+
+    URL.createObjectURL(
+      blob
+    );
+
+
+  const link =
+
+    document
+      .createElement("a");
+
+
+  link.href =
+    url;
+
+
+  link.download =
+    filename;
+
+
+  document.body
+    .appendChild(link);
+
+
+  link.click();
+
+
+  document.body
+    .removeChild(link);
+
+
+  setTimeout(function(){
+
+
+    URL.revokeObjectURL(
+      url
+    );
+
+
+  },1000);
+
+}
+
+
+
+/*
+====================================================
+  DOWNLOAD UNICODE
+====================================================
+*/
+
+window.downloadUnicode = function(){
+
+
+  downloadText(
+
+    document
+      .getElementById("unicodeText")
+      .value,
+
+    "unicode-text.txt"
+
+  );
+
+};
+
+
+
+/*
+====================================================
+  DOWNLOAD BIJOY
+====================================================
+*/
+
+window.downloadBijoy = function(){
+
+
+  downloadText(
+
+    document
+      .getElementById("bijoyText")
+      .value,
+
+    "bijoy-text.txt"
+
+  );
+
+};
+
+
+</script>
+
+
+</body>
+
+</html>
