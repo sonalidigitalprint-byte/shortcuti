@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- =========================
+       BASIC SEO
+  ========================= -->
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shortcuti – Free Online Photo & Bengali Tools</title>
+
+  <meta
+    name="description"
+    content="Shortcuti is a free online tools platform for photo background removal, photo enhancement and Bijoy ↔ Unicode Bengali text conversion."
+  >
+
+  <meta
+    name="keywords"
+    content="Shortcuti, online tools, photo remover, background remover, photo enhancer, image enhancer, Bijoy to Unicode, Unicode to Bijoy, Bengali converter, Bangla tools"
+  >
+
+  <meta name="author" content="Shortcuti">
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="googlebot" content="index, follow">
+
+  <meta name="language" content="English, Bengali">
+
+  <meta name="revisit-after" content="7 days">
+
+
+  <!-- =========================
+       GOOGLE ANALYTICS
+  ========================= -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8Z08D04EQ"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-R8Z08D04EQ');
+  </script>
+
+
+  <!-- =========================
+       CANONICAL URL
+  ========================= -->
+
+  <link rel="canonical" href="https://shortcuti.com/">
+
+
+  <!-- =========================
+       OPEN GRAPH
+       Facebook / WhatsApp / Messenger
+  ========================= -->
+
+  <meta property="og:type" content="website">
+
+  <meta property="og:url" content="https://shortcuti.com/">
+
+  <meta
+    property="og:title"
+    content="Shortcuti – Free Online Photo & Bengali Tools"
+  >
+
+  <meta
+    property="og:description"
+    content="Remove photo backgrounds, enhance photos and convert Bijoy ↔ Unicode Bengali text with Shortcuti."
+  >
+
+  <meta property="og:site_name" content="Shortcuti">
+
+  <meta property="og:locale" content="en_US">
+
+  <meta property="og:locale:alternate" content="bn_BD">
+
+  <meta
+    property="og:image"
+    content="https://shortcuti.com/og-image.jpg"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="Shortcuti Online Tools"
+  >
+
+
+  <!-- =========================
+       TWITTER / X
+  ========================= -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Shortcuti – Free Online Photo & Bengali Tools"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Free online tools for photo background removal, photo enhancement and Bijoy ↔ Unicode conversion."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://shortcuti.com/og-image.jpg"
+  >
+
+  <meta
+    name="twitter:image:alt"
+    content="Shortcuti Online Tools"
+  >
+
+
+  <!-- =========================
+       MOBILE / THEME
+  ========================= -->
+
+  <meta name="theme-color" content="#05070b">
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Shortcuti"
+  >
+
+
+  <!-- =========================
+       FAVICON
+  ========================= -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="favicon.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="favicon.png"
+  >
+
+
+  <!-- =========================
+       STYLES
+  ========================= -->
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #05070b;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: -300px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: rgba(0, 174, 255, 0.12);
+      filter: blur(120px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      right: -250px;
+      bottom: -250px;
+      width: 600px;
+      height: 600px;
+      background: rgba(91, 63, 255, 0.10);
+      filter: blur(120px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    header {
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5,7,11,0.82);
+      backdrop-filter: blur(15px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 20px;
+
+      background: linear-gradient(135deg, #00d9ff, #2674ff);
+      box-shadow: 0 0 25px rgba(0,200,255,0.35);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-right a {
+      color: #b7c0cc;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-right a:hover {
+      color: #00cfff;
+    }
+
+    .nav-button {
+      padding: 11px 19px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #00cfff, #1677ff);
+      color: white !important;
+      font-weight: 700;
+      box-shadow: 0 8px 25px rgba(0,170,255,0.2);
+    }
+
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,170,255,0.35);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      max-width: 1050px;
+      margin: auto;
+      padding: 90px 20px 75px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 16px;
+      border: 1px solid rgba(0,207,255,0.35);
+      border-radius: 50px;
+
+      color: #00d5ff;
+      background: rgba(0,200,255,0.06);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      margin-bottom: 25px;
+    }
+
+    .badge span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00eaff;
+      box-shadow: 0 0 10px #00eaff;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 7vw, 82px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        #00d9ff,
+        #007bff,
+        #704cff,
+        #b44cff
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+
+      color: #9ca8b7;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      padding: 15px 25px;
+      border-radius: 11px;
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.3s;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #00d5ff, #176dff);
+      box-shadow: 0 10px 35px rgba(0,170,255,0.22);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,170,255,0.35);
+    }
+
+    .secondary-btn {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+      color: #e8edf5;
+    }
+
+    .secondary-btn:hover {
+      border-color: rgba(0,200,255,0.5);
+      background: rgba(0,200,255,0.07);
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       TOOLS SECTION
+    ========================= */
+
+    .tools-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 50px 24px 100px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-label {
+      color: #00cfff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 46px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #7f8b9b;
+      font-size: 15px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+
+    /* =========================
+       TOOL CARD
+    ========================= */
+
+    .tool-card {
+      position: relative;
+      overflow: hidden;
+
+      padding: 28px;
+
+      min-height: 330px;
+
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.015)
+        );
+
+      transition: 0.35s;
+    }
+
+    .tool-card::before {
+      content: "";
+      position: absolute;
+
+      top: -100px;
+      right: -100px;
+
+      width: 220px;
+      height: 220px;
+
+      border-radius: 50%;
+
+      background: rgba(0,190,255,0.08);
+      filter: blur(40px);
+
+      transition: 0.35s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,200,255,0.35);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .tool-card:hover::before {
+      background: rgba(0,190,255,0.16);
+    }
+
+    .tool-icon {
+      width: 58px;
+      height: 58px;
+
+      border-radius: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 27px;
+
+      margin-bottom: 25px;
+
+      background: rgba(0,200,255,0.10);
+      border: 1px solid rgba(0,200,255,0.22);
+    }
+
+    .enhancer .tool-icon {
+      background: rgba(255,185,40,0.10);
+      border-color: rgba(255,185,40,0.25);
+    }
+
+    .converter .tool-icon {
+      background: rgba(75,120,255,0.10);
+      border-color: rgba(75,120,255,0.25);
+    }
+
+    .tool-card h3 {
+      font-size: 22px;
+      margin-bottom: 13px;
+    }
+
+    .tool-card p {
+      color: #8e99a8;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 70px;
+    }
+
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-top: 22px;
+
+      padding: 11px 17px;
+
+      border-radius: 9px;
+
+      color: #00d4ff;
+      border: 1px solid rgba(0,200,255,0.28);
+      background: rgba(0,200,255,0.05);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: 0.3s;
+    }
+
+    .tool-link:hover {
+      background: #00bde8;
+      color: #00151d;
+      transform: translateX(3px);
+    }
+
+
+    /* =========================
+       WHY SHORTCUTI
+    ========================= */
+
+    .why-section {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+
+      background: rgba(255,255,255,0.015);
+    }
+
+    .why-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 75px 24px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .why-text h2 {
+      font-size: 40px;
+      margin-bottom: 18px;
+    }
+
+    .why-text p {
+      color: #8d98a8;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 20px;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .feature h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      color: #7e8998;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      max-width: 950px;
+      margin: 80px auto;
+      padding: 55px 25px;
+
+      text-align: center;
+
+      border-radius: 25px;
+
+      border: 1px solid rgba(0,200,255,0.18);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(0,180,255,0.10),
+          transparent 65%
+        );
+    }
+
+    .cta h2 {
+      font-size: clamp(30px, 5vw, 45px);
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #8995a5;
+      margin-bottom: 25px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px 20px;
+
+      color: #6f7a88;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #b8c1cd;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .navbar {
+        padding: 14px 18px;
+      }
+
+      .nav-right {
+        gap: 15px;
+      }
+
+      .nav-right a:not(.nav-button) {
+        display: none;
+      }
+
+      .hero {
+        padding: 70px 20px 60px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+    }
+
+
+    @media (max-width: 500px) {
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .nav-button {
+        padding: 9px 13px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .tools-section {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .tool-card {
+        min-height: auto;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .why-text h2 {
+        font-size: 32px;
+      }
+
+      .cta {
+        margin: 50px 16px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <header>
+
+    <nav class="navbar">
+
+      <a href="index.html" class="logo">
+
+        <div class="logo-icon">
+          🚀
+        </div>
+
+        <span>
+          Shortcuti
+        </span>
+
+      </a>
+
+
+      <div class="nav-right">
+
+        <a href="#tools">
+          Tools
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#tools" class="nav-button">
+          Get Started
+        </a>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="badge">
+
+        <span></span>
+
+        Powerful Online Tools
+
+      </div>
+
+
+      <h1>
+
+        Powerful Tools.<br>
+
+        <span class="gradient-text">
+          Made Simple.
+        </span>
+
+      </h1>
+
+
+      <p>
+
+        Shortcuti brings useful online tools together in one place.
+        Remove backgrounds, enhance photos and convert Bengali text
+        quickly and easily.
+
+      </p>
+
+
+      <div class="hero-buttons">
+
+        <a
+          href="#tools"
+          class="primary-btn"
+        >
+          Explore Tools →
+        </a>
+
+
+        <a
+          href="background-remover.html"
+          class="secondary-btn"
+        >
+          🖼️ Remove Background
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TOOLS
+    ========================= -->
+
+    <section
+      class="tools-section"
+      id="tools"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          OUR TOOLS
+        </div>
+
+
+        <h2>
+          Everything You Need
+        </h2>
+
+
+        <p>
+          Simple, fast and powerful tools for everyday work.
+        </p>
+
+      </div>
+
+
+      <div class="tools-grid">
+
+
+        <!-- PHOTO REMOVER -->
+
+        <div class="tool-card">
+
+          <div class="tool-icon">
+            🖼️
+          </div>
+
+
+          <h3>
+            Photo Remover
+          </h3>
+
+
+          <p>
+
+            Remove image backgrounds quickly and easily.
+            Create clean transparent images for your
+            projects and designs.
+
+          </p>
+
+
+          <a
+            href="background-remover.html"
+            class="tool-link"
+          >
+            Open Tool →
+          </a>
+
+        </div>
+
+
+        <!-- PHOTO ENHANCER -->
+
+        <div class="tool-card enhancer">
+
+          <div class="tool-icon">
+            ✨
+          </div>
+
+
+          <h3>
+            Photo Enhancer
+          </h3>
+
+
+          <p>
+
+            Enhance and improve your photos with powerful
+            image enhancement tools. Make your photos
+            clearer and sharper.
+
+          </p>
+
+
+          <a
+            href="photo-enhancer.html"
+            class="tool-link"
+          >
+            Open Tool →
+          </a>
+
+        </div>
+
+
+        <!-- BIJOY UNICODE -->
+
+        <div class="tool-card converter">
+
+          <div class="tool-icon">
+            🔤
+          </div>
+
+
+          <h3>
+            Bijoy ↔ Unicode
+          </h3>
+
+
+          <p>
+
+            Convert Bengali text between Bijoy and Unicode
+            quickly and easily for writing, printing and
+            digital work.
+
+          </p>
+
+
+          <a
+            href="bijoy-to-unicode.html"
+            class="tool-link"
+          >
+            Open Tool →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHY SHORTCUTI
+    ========================= -->
+
+    <section
+      class="why-section"
+      id="about"
+    >
+
+      <div class="why-inner">
+
+
+        <div class="why-text">
+
+          <div class="section-label">
+            WHY SHORTCUTI
+          </div>
+
+
+          <h2>
+            Everything in one place.
+          </h2>
+
+
+          <p>
+
+            No need to search for different websites for
+            everyday tasks. Shortcuti is designed to keep
+            useful tools simple, fast and easy to access.
+
+          </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              ⚡
+            </div>
+
+            <h4>
+              Fast & Simple
+            </h4>
+
+            <p>
+              Easy-to-use tools without unnecessary steps.
+            </p>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              📱
+            </div>
+
+            <h4>
+              Mobile Friendly
+            </h4>
+
+            <p>
+              Works smoothly on phones, tablets and computers.
+            </p>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              🔒
+            </div>
+
+            <h4>
+              Easy to Use
+            </h4>
+
+            <p>
+              Clean interface designed for everyone.
+            </p>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              🚀
+            </div>
+
+            <h4>
+              Always Improving
+            </h4>
+
+            <p>
+              More useful tools can be added over time.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta">
+
+      <h2>
+        Ready to get started?
+      </h2>
+
+
+      <p>
+        Choose a tool and get your work done in seconds.
+      </p>
+
+
+      <a
+        href="#tools"
+        class="primary-btn"
+      >
+        Explore All Tools →
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    © 2026
+    <strong>
+      Shortcuti
+    </strong>
+    — All Rights Reserved.
+
+  </footer>
+
+
+</body>
+
+</html>
